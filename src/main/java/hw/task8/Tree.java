@@ -33,6 +33,35 @@ public class Tree {
         Stream<Tree> grandChildrenStream = this.getChildren().stream()
                 .flatMap(tree -> tree.getChildren().stream());
         Stream<Tree> concat = Stream.concat(childrenStream, grandChildrenStream);
-        return Stream.concat(own,concat);
+        return Stream.concat(own, concat);
     }
+
+    // Get all values in the tree:
+    public List<Integer> getAllValues() {
+        return flattened()
+                .map(Tree::getValue)
+                .collect(Collectors.toList());
+    }
+
+    // Get even values:
+    public List<Integer> getEvenValues() {
+        return flattened()
+                .filter(tree -> tree.getValue() % 2 == 0)
+                .map(Tree::getValue)
+                .collect(Collectors.toList());
+    }
+
+    // Sum of even values:
+    public Optional<Integer> sumOfEvenValues() {
+        return flattened()
+                .filter(tree -> tree.getValue() % 2 == 0)
+                .map(Tree::getValue)
+                .reduce((i1, i2) -> i1 + i2);
+    }
+
+    // Does it contain 13?
+    public Boolean isContains13() {
+        return flattened().anyMatch(tree -> tree.getValue() == 13);
+    }
+
 }

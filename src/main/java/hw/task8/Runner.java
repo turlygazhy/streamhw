@@ -1,5 +1,7 @@
 package hw.task8;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Runner {
@@ -17,5 +19,10 @@ public class Runner {
 
         Stream<Tree> flattened = tree.flattened();
         flattened.forEach(s -> System.out.println(s.getValue()));
+
+        List<Integer> allValues = tree.getAllValues();
+        List<Integer> evenValues = tree.getEvenValues();
+        Optional<Integer> integer = tree.sumOfEvenValues();
+        Boolean contains13 = tree.isContains13();
     }
 }
