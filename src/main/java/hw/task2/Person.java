@@ -1,4 +1,4 @@
-package hw;
+package hw.task2;
 
 public class Person {
     private String name;

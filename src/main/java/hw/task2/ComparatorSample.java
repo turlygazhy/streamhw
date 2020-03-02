@@ -1,4 +1,4 @@
-package hw;
+package hw.task2;
 
 import java.util.Arrays;
 import java.util.Comparator;
